@@ -1,7 +1,8 @@
 var React = require('react'),
     ptypes = React.PropTypes,
     ReactRedux = require('react-redux'),
-    actions = require('../actions');
+    actions = require('../actions'),
+	Message = require('./message');
 
 var MessageList = React.createClass({
     propTypes: {
@@ -11,7 +12,13 @@ var MessageList = React.createClass({
         return (
             <div>
                 <h2>Message</h2>
-                <p>{this.props.body.length}</p>
+				<ul>
+				  {this.props.body.map((todo, index) =>
+				  <Message {...todo}
+						key={index}
+						/>
+				)}
+			    </ul>
 				<p>
                     <button onClick={this.props.change}>change</button>
                 </p>
