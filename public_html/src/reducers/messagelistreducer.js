@@ -4,8 +4,8 @@ var MessagelistReducer = function(state, action){
     var newState = Object.assign({}, state);
     switch(action.type){
         case 'MESSAGE_CHANGE': 
-		newState.body.push("newobject");
-		return newState;		
+            newState.body = newState.body.concat("newobject");
+            return newState;
         default:
             return state || initialState().message;
     }
