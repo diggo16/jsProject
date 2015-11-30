@@ -5,8 +5,14 @@ var React = require('react'),
 
 var MessageList = React.createClass({
     propTypes: {
-        change: ptypes.func.isRequired
+		onAddClick: ptypes.func.isRequired
     },
+	handleClick(e) {
+		var node = this.refs.input;
+		var text = node.value.trim();
+		this.props.onAddClick(text);
+		node.value = '';
+	},
     render: function(){
         return (
             <div>
@@ -18,7 +24,10 @@ var MessageList = React.createClass({
 				  ]);
 				})}
 				<p>
-                    <button onClick={this.props.change}>change</button>
+					<input type='text' ref='input' />
+					<button onClick={(e) => this.handleClick(e)}>
+					  Send
+					</button>
                 </p>
             </div>
         );
@@ -31,8 +40,8 @@ var mapStateToProps = function(state){
 
 var mapDispatchToProps = function(dispatch){
     return {
-        change: function(){
-            dispatch(actions.changemessage("newobjectfrommessagelist"));
+		onAddClick: function(text){
+            dispatch(actions.addmessage(text));
         }
     }
 };
