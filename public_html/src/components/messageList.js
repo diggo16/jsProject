@@ -3,6 +3,16 @@ var React = require('react'),
     ReactRedux = require('react-redux'),
     actions = require('../actions'),
 	Message = require('./message');
+	
+var Message = React.createClass({
+    render: function(){
+        return (
+           <li>
+			hello list
+		  </li>
+        );
+    }
+});
 
 var MessageList = React.createClass({
     propTypes: {
@@ -12,13 +22,12 @@ var MessageList = React.createClass({
         return (
             <div>
                 <h2>Message</h2>
-				<ul>
-				  {this.props.body.map((todo, index) =>
-				  <Message {...todo}
-						key={index}
-						/>
-				)}
-			    </ul>
+				{this.props.body.map(function (message) {
+				  return ([
+					<h3>Message</h3>,
+					<p>{message}</p>
+				  ]);
+				})}
 				<p>
                     <button onClick={this.props.change}>change</button>
                 </p>
