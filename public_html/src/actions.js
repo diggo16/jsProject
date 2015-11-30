@@ -1,5 +1,5 @@
 module.exports = {
-    changemessage: function(){
-        return {type: 'MESSAGE_CHANGE'};
+    changemessage: function(text){
+        return {type: 'MESSAGE_CHANGE', text};
     }
 };

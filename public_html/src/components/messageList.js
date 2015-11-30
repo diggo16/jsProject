@@ -1,18 +1,7 @@
 var React = require('react'),
     ptypes = React.PropTypes,
     ReactRedux = require('react-redux'),
-    actions = require('../actions'),
-	Message = require('./message');
-	
-var Message = React.createClass({
-    render: function(){
-        return (
-           <li>
-			hello list
-		  </li>
-        );
-    }
-});
+    actions = require('../actions');
 
 var MessageList = React.createClass({
     propTypes: {
@@ -43,7 +32,7 @@ var mapStateToProps = function(state){
 var mapDispatchToProps = function(dispatch){
     return {
         change: function(){
-            dispatch(actions.changemessage());
+            dispatch(actions.changemessage("newobjectfrommessagelist"));
         }
     }
 };
