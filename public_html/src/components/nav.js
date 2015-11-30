@@ -1,6 +1,6 @@
 var React = require('react'),
     Link = require('react-router').Link;
-
+// Navigate to different subsites by changing the adress
 var Nav = React.createClass({
     render: function(){
         return (

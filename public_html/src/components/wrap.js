@@ -1,6 +1,7 @@
 var React = require('react'),
     Nav = require('./nav');
 
+// Wrap the navigation window and the other objects together
 var Wrap = React.createClass({
     render: function(){
         return (

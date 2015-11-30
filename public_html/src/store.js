@@ -1,7 +1,7 @@
 var Redux = require('redux'),
     messagelistReducer = require('./reducers/messagelistreducer'),
     initialState = require('./initial-state');
-
+// Combine the reducers
 var reducers = Redux.combineReducers({
     message: messagelistReducer
 });

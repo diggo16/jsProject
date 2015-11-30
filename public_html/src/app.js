@@ -4,7 +4,7 @@ var React = require('react'),
     Provider = require('react-redux').Provider,
     store = require('./store'),
     routes = require('./routes');
-
+// The output with help from a store and routes
 ReactDOM.render(
     <Provider store={store}>
         <Router routes={routes}/>
