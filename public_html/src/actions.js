@@ -1,10 +1,10 @@
 module.exports = {
 	/*
-	*	A method that sends "MESSAGE_ADD" and text parameter to messagelistreducer.
-	*	Parameter: String text. The message that shall be added.
+	*	A method that sends "MESSAGE_ADD" and parameters to messagelistreducer.
+	*	Parameters: String text. The message that shall be added.
+	*				String author. The name of the author.
 	*/
-	addmessage: function(text, time, author, node){
-		node.value = "";
+	addmessage: function(text, author){
 		var date = new Date();
 		var year = date.getFullYear().toString();
 		year = year[2] + year[3];
