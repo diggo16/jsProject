@@ -9,7 +9,7 @@ var MessagelistReducer = function(state, action){
 			var message = action.params[0];
 			var time = action.params[1];
 			var author = action.params[2];
-			// Concat the new message to the list
+			// Concat the new message, time and author to the list
             newState.body = newState.body.concat(message);
 			newState.time = newState.time.concat(time);
 			newState.author = newState.author.concat(author);

@@ -62,6 +62,7 @@ p{
     float:left; /* add this */
 }
 #times{
+	width: 100px;
     float: right; /* add this */
 }
 #message {

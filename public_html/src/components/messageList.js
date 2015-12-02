@@ -17,9 +17,9 @@ var MessageList = React.createClass({
 		var time = "2015-12-30";
 		var author = "Anonymous";
 		// Send the text to the onAddClick function that adds it to the list		
-		this.props.onAddClick(text, time, author);
+		this.props.onAddClick(text, time, author, node);
 		// Reset the input field
-		node.value = '';
+		//node.value = '';
 	},
 	// Render the message list, text input field and add button
     render: function(){
@@ -64,9 +64,8 @@ var mapStateToProps = function(state){
 // Connect onAddClick function to the messagelistreducer
 var mapDispatchToProps = function(dispatch){
     return {
-		onAddClick: function(text, time, author){
-			params = [text,time,author]
-            dispatch(actions.addmessage(params));
+		onAddClick: function(text, time, author, node){
+            dispatch(actions.addmessage(text, time, author, node));
         }
     }
 };
