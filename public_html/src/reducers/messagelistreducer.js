@@ -6,9 +6,13 @@ var MessagelistReducer = function(state, action){
 		// When you want to add a message
         case 'MESSAGE_ADD':
 			// The message that should be added
-			var message = action.text;
+			var message = action.params[0];
+			var time = action.params[1];
+			var author = action.params[2];
 			// Concat the new message to the list
             newState.body = newState.body.concat(message);
+			newState.time = newState.time.concat(time);
+			newState.author = newState.author.concat(author);
             return newState;
         default:
             return state || initialState().message;

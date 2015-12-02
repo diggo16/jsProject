@@ -14,29 +14,46 @@ var MessageList = React.createClass({
 		// collect the text from the text input
 		var node = this.refs.input;
 		var text = node.value.trim();
+		var time = "2015-12-30";
+		var author = "Anonymous";
 		// Send the text to the onAddClick function that adds it to the list		
-		this.props.onAddClick(text);
+		this.props.onAddClick(text, time, author);
 		// Reset the input field
 		node.value = '';
 	},
 	// Render the message list, text input field and add button
     render: function(){
         return (
-            <div>
-                <h2>Message</h2>
-				{this.props.body.map(function (message) {
-				  return ([
-					<h3>Message</h3>,
-					<p>{message}</p>
-				  ]);
-				})}
+			<div>
+			<div id = 'title'>
+			<h2>Message</h2>
+			</div>
+            <div id = 'messagelist'>
+				<div id = 'authors'>
+					{this.props.author.map(function (author) {
+					  return (<p id='author'>{author}</p>);
+					})}
+				</div>
+				<div id = 'messages'>
+					{this.props.body.map(function (message) {
+					  return (<p id='message'>{message}</p>);
+					})}
+				</div>
+				<div id = 'times'>
+					{this.props.time.map(function (time) {
+					  return (<p id ='time'>{time}</p>);
+					})}
+				</div>
+            </div>
+			<div id = 'add'>
 				<p>
 					<input type='text' ref='input' />
 					<button onClick={(e) => this.handleClick(e)}>
 					  Send
 					</button>
                 </p>
-            </div>
+				</div>
+			</div>
         );
     }
 });
@@ -47,8 +64,9 @@ var mapStateToProps = function(state){
 // Connect onAddClick function to the messagelistreducer
 var mapDispatchToProps = function(dispatch){
     return {
-		onAddClick: function(text){
-            dispatch(actions.addmessage(text));
+		onAddClick: function(text, time, author){
+			params = [text,time,author]
+            dispatch(actions.addmessage(params));
         }
     }
 };

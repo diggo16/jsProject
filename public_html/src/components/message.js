@@ -3,13 +3,11 @@ var React = require('react'),
 
 var Message = React.createClass({
     propTypes: {
-        text: ptypes.func.isRequired
+        text: ptypes.string.isRequired
     },
     render() {
 		 return (
-		<li>
-			{this.props.text}
-		</li>
+		<p>{text} </p>
 		);
 	}
 });

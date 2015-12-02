@@ -48,3 +48,23 @@ p{
     text-decoration:underline;
     background-color:#f6f6f6;
 }
+#messagelist {
+    width: 500px;
+    border: 1px solid black;
+    overflow: hidden; /* add this to contain floated children */
+}
+#authors {
+    width: 100px;
+    float:left; /* add this */
+}
+#messages {
+    width: 300px;
+    float:left; /* add this */
+}
+#times{
+    float: right; /* add this */
+}
+#message {
+}
+#time {
+}
