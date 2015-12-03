@@ -7,16 +7,22 @@ var React = require('react'),
 */
 var MessageList = React.createClass({
     propTypes: {
-		onAddClick: ptypes.func.isRequired
+		onAddClick: ptypes.func.isRequired,
+		author: ptypes.string.isRequired,
+		messages: ptypes.arrayOf(ptypes.shape({
+			text: ptypes.string.isRequired,
+			author: ptypes.string.isRequired,
+			time: ptypes.string.isRequired
+		})).isRequired
     },
 	// Handle the add button when clicked
 	handleClick(e) {
 		// collect the text from the text input
 		var node = this.refs.input;
 		var text = node.value.trim();
-		var author = "Anonymous";
+		var author = this.props.author;
 		// Send the text to the onAddClick function that adds it to the list		
-		this.props.onAddClick(text, author);
+		this.props.onAddClick(text,author);
 		// Reset the input field
 		node.value = '';
 	},
@@ -28,19 +34,20 @@ var MessageList = React.createClass({
 			<h2>Message</h2>
 			</div>
             <div id = 'messagelist'>
+
 				<div id = 'authors'>
-					{this.props.author.map(function (author) {
-					  return (<p id='author'>{author}</p>);
+					{this.props.messages.map(function (msg,n) {
+					  return (<p key={n} id='author'>{msg.author}</p>);
 					})}
 				</div>
 				<div id = 'messages'>
-					{this.props.body.map(function (message) {
-					  return (<p id='message'>{message}</p>);
+					{this.props.messages.map(function (msg,n) {
+					  return (<p key={n} id='message'>{msg.text}</p>);
 					})}
 				</div>
 				<div id = 'times'>
-					{this.props.time.map(function (time) {
-					  return (<p id ='time'>{time}</p>);
+					{this.props.messages.map(function (msg,n) {
+					  return (<p key={n} id ='time'>{msg.time}</p>);
 					})}
 				</div>
             </div>
@@ -58,13 +65,16 @@ var MessageList = React.createClass({
 });
 // Transform the message state to props
 var mapStateToProps = function(state){
-    return state.message;
+    return {
+    	author: state.settings.author,
+    	messages: state.messages
+    };
 };
 // Connect onAddClick function to the messagelistreducer
 var mapDispatchToProps = function(dispatch){
     return {
-		onAddClick: function(text, author){
-            dispatch(actions.addmessage(text, author));
+		onAddClick: function(text,author){
+            dispatch(actions.addmessage(text,author));
         }
     }
 };
