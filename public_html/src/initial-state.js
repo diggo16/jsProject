@@ -9,6 +9,9 @@ module.exports = function(){
             body: messages,
 			time: times,
 			author: authors
-        }
+        },
+		settings: {
+			author: "Anonymous"
+		}
     }
 };

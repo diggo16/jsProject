@@ -34,5 +34,8 @@ module.exports = {
 		
 		params = [text,time,author]
         return {type: 'MESSAGE_ADD', params};
-    }
+    },
+	changeSettings: function(username) {
+		return {type: 'SETTINGS_CHANGE', author: username};
+	}
 };
