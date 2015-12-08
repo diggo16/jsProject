@@ -1,7 +1,9 @@
 var React = require('react'),
     ptypes = React.PropTypes,
     ReactRedux = require('react-redux'),
-    actions = require('../actions');
+    actions = require('../actions'),
+	Settings = require('./settings'),
+	Message = require('./message');
 /*
  * The react class that renders the message list and add button
 */
@@ -22,27 +24,21 @@ var MessageList = React.createClass({
 	},
 	// Render the message list, text input field and add button
     render: function(){
+		length = this.props.body.length;
+		var objects = [];
+		for(var i = 0; i < length; i++)
+		{
+			objects[i] = [this.props.author[i], this.props.body[i], this.props.time[i]];
+		}
         return (
 			<div>
 			<div id = 'title'>
 			<h2>Message</h2>
 			</div>
             <div id = 'messagelist'>
-				<div id = 'authors'>
-					{this.props.author.map(function (author) {
-					  return (<p id='author'>{author}</p>);
+					{this.props.author.map(function (author, index) {
+						return (<Message author={objects[index][0]} body = {objects[index][1]} time = {objects[index][2]}/>);
 					})}
-				</div>
-				<div id = 'messages'>
-					{this.props.body.map(function (message) {
-					  return (<p id='message'>{message}</p>);
-					})}
-				</div>
-				<div id = 'times'>
-					{this.props.time.map(function (time) {
-					  return (<p id ='time'>{time}</p>);
-					})}
-				</div>
             </div>
 			<div id = 'add'>
 				<p>

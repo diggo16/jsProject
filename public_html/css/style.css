@@ -55,17 +55,25 @@ p{
 }
 #authors {
     width: 100px;
-    float:left; /* add this */
+    float:left;
 }
 #messages {
     width: 300px;
-    float:left; /* add this */
+    float:left;
 }
 #times{
 	width: 100px;
-    float: right; /* add this */
+    float: right;
+}
+#author {
+	width: 100px;
+	float:left;
 }
 #message {
+	width: 300px;
+	float:left;
 }
 #time {
+	width: 100px;
+	float:right;
 }
