@@ -5,7 +5,9 @@ var SettingsReducer = function(state, action){
     switch(action.type){
 		// When you want to add a message
         case 'SETTINGS_CHANGE':
-			newState.author = action.author;
+			var author = action.author;
+
+			newState.author = author;
             return newState;
         default:
             return state || initialState().settings;

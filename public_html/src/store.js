@@ -4,7 +4,7 @@ var Redux = require('redux'),
     initialState = require('./initial-state');
 // Combine the reducers
 var reducers = Redux.combineReducers({
-    message: messagelistReducer,
+    messages: messagelistReducer,
 	settings: settingsReducer
 });
 

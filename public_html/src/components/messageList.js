@@ -1,44 +1,55 @@
 var React = require('react'),
     ptypes = React.PropTypes,
     ReactRedux = require('react-redux'),
-    actions = require('../actions'),
-	Settings = require('./settings'),
-	Message = require('./message');
+    actions = require('../actions');
 /*
  * The react class that renders the message list and add button
 */
 var MessageList = React.createClass({
     propTypes: {
-		onAddClick: ptypes.func.isRequired
+		onAddClick: ptypes.func.isRequired,
+		author: ptypes.string.isRequired,
+		messages: ptypes.arrayOf(ptypes.shape({
+			text: ptypes.string.isRequired,
+			author: ptypes.string.isRequired,
+			time: ptypes.string.isRequired
+		})).isRequired
     },
 	// Handle the add button when clicked
 	handleClick(e) {
 		// collect the text from the text input
 		var node = this.refs.input;
 		var text = node.value.trim();
-		var author = "Anonymous";
+		var author = this.props.author;
 		// Send the text to the onAddClick function that adds it to the list		
-		this.props.onAddClick(text, author);
+		this.props.onAddClick(text,author);
 		// Reset the input field
 		node.value = '';
 	},
 	// Render the message list, text input field and add button
     render: function(){
-		length = this.props.body.length;
-		var objects = [];
-		for(var i = 0; i < length; i++)
-		{
-			objects[i] = [this.props.author[i], this.props.body[i], this.props.time[i]];
-		}
         return (
 			<div>
 			<div id = 'title'>
 			<h2>Message</h2>
 			</div>
             <div id = 'messagelist'>
-					{this.props.author.map(function (author, index) {
-						return (<Message author={objects[index][0]} body = {objects[index][1]} time = {objects[index][2]}/>);
+
+				<div id = 'authors'>
+					{this.props.messages.map(function (msg,n) {
+					  return (<p key={n} id='author'>{msg.author}</p>);
 					})}
+				</div>
+				<div id = 'messages'>
+					{this.props.messages.map(function (msg,n) {
+					  return (<p key={n} id='message'>{msg.text}</p>);
+					})}
+				</div>
+				<div id = 'times'>
+					{this.props.messages.map(function (msg,n) {
+					  return (<p key={n} id ='time'>{msg.time}</p>);
+					})}
+				</div>
             </div>
 			<div id = 'add'>
 				<p>
@@ -54,13 +65,16 @@ var MessageList = React.createClass({
 });
 // Transform the message state to props
 var mapStateToProps = function(state){
-    return state.message;
+    return {
+    	author: state.settings.author,
+    	messages: state.messages
+    };
 };
 // Connect onAddClick function to the messagelistreducer
 var mapDispatchToProps = function(dispatch){
     return {
-		onAddClick: function(text, author){
-            dispatch(actions.addmessage(text, author));
+		onAddClick: function(text,author){
+            dispatch(actions.addmessage(text,author));
         }
     }
 };

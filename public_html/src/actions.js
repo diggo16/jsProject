@@ -4,7 +4,7 @@ module.exports = {
 	*	Parameters: String text. The message that shall be added.
 	*				String author. The name of the author.
 	*/
-	addmessage: function(text, author){
+	addmessage: function(text,author){
 		var date = new Date();
 		var year = date.getFullYear().toString();
 		year = year[2] + year[3];
@@ -32,8 +32,7 @@ module.exports = {
 		var hyphen = "-";
 		time =  hours + ":" + minutes  + " " + day + "/" + month + hyphen + year;
 		
-		params = [text,time,author]
-        return {type: 'MESSAGE_ADD', params};
+        return {type: 'MESSAGE_ADD', text:text,time:time,author:author};
     },
 	changeSettings: function(username) {
 		return {type: 'SETTINGS_CHANGE', author: username};

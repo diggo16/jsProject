@@ -3,18 +3,11 @@ var React = require('react'),
 
 var Message = React.createClass({
     propTypes: {
-		author: ptypes.string,
-        body: ptypes.string,
-		time: ptypes.string
+        text: ptypes.string.isRequired
     },
     render() {
-		return (
-		<div>
-			<div id = 'messagesss'> 
-				<p><div id = 'author'>{this.props.author}</div> <div id = 'message'>{this.props.body}</div> <div id = 'time'>{this.props.time}</div> </p>
-			</div>
-		</div>
+		 return (
+		<p>{text} </p>
 		);
 	}
 });
-module.exports = Message;
