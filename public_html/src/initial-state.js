@@ -1,4 +1,3 @@
-
 // Initialize the states
 module.exports = function(){
     return {

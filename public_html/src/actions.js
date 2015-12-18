@@ -5,33 +5,16 @@ module.exports = {
 	*				String author. The name of the author.
 	*/
 	addmessage: function(text,author){
-		var date = new Date();
-		var year = date.getFullYear().toString();
-		year = year[2] + year[3];
-		var month = date.getMonth();
-		month++;
-		var day = date.getDay();
-		day++;
-		if(day < 10)
-		{
-			day = day.toString();
-			day = "0" + day;
-		}
-		var hours = date.getHours();
-		if(hours < 10)
-		{
-			hours = hours.toString();
-			hours = "0" + hours;
-		}
-		var minutes = date.getMinutes();
-		if(minutes < 10)
-		{
-			minutes = minutes.toString();
-			minutes = "0" + minutes;
-		}
-		var hyphen = "-";
-		time =  hours + ":" + minutes  + " " + day + "/" + month + hyphen + year;
-		
+
+		var MyDate = new Date();
+
+		var MyDateString = ('0' + MyDate.getHours()).slice(-2) + ":"
+					     + ('0' + MyDate.getMinutes()).slice(-2) + " "
+					 	 + ('0' + MyDate.getDate()).slice(-2) + '/'
+		             	 + ('0' + (MyDate.getMonth()+1)).slice(-2) + '-'
+		            	 + MyDate.getFullYear().toString().substring(2,4);
+        var time = MyDateString;
+
         return {type: 'MESSAGE_ADD', text:text,time:time,author:author};
     },
 	changeSettings: function(username) {

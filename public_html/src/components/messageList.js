@@ -31,7 +31,6 @@ var MessageList = React.createClass({
         return (
 			<div>
 			<div id = 'title'>
-			<h2>Message</h2>
 			</div>
             <div id = 'messagelist'>
 
