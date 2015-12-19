@@ -11,6 +11,7 @@ module.exports = function(){
 			author: "David"
 		}],
 		settings: {
+			successMessages: [],
 			author: "Anonymous"
 		}
     }

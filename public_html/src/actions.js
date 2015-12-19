@@ -1,3 +1,5 @@
+var constants = require("./constants");
+
 module.exports = {
     /*
      *	A method that sends "MESSAGE_ADD" and parameters to messagelistreducer.
@@ -21,9 +23,14 @@ module.exports = {
         var timeString = time.join(":");
         var dateString = dates.join("-");
 
-        return {type: 'MESSAGE_ADD', text: text, time: dateString + " " + timeString, author: author};
+        return {type: constants.MESSAGE_ADD, text: text, time: dateString + " " + timeString, author: author};
     },
     changeSettings: function (username) {
-        return {type: 'SETTINGS_CHANGE', author: username};
+        return function(dispatch, getState){
+            dispatch({type: constants.SETTINGS_CHANGE, author: username});
+            setTimeout(function() {
+                dispatch({type: constants.CLEAR_SUCCESS_MESSAGES});
+            }, 10000);
+        };
     }
 };

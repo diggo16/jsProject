@@ -20,8 +20,12 @@ var MessageList = React.createClass({
     render: function () {
         return (
             <div>
+                <ul>{this.props.settings.successMessages.map(function (message, index) {
+                        return <li key={index}>{message} </li>;
+                    }
+                )}</ul>
                 <p>Settings</p>
-                <p>Name:<input type='text' ref='username' defaultValue={this.props.author}/></p>
+                <p>Name:<input type='text' ref='username' defaultValue={this.props.settings.author}/></p>
                 <button onClick={(e) => this.handleClick(e)}>
                     Change
                 </button>
@@ -31,7 +35,7 @@ var MessageList = React.createClass({
 });
 // Transform the message state to props
 var mapStateToProps = function (state) {
-    return state.settings;
+    return {settings: state.settings};
 };
 // Connect onAddClick function to the messagelistreducer
 var mapDispatchToProps = function (dispatch) {
