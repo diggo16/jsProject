@@ -1,0 +1,9 @@
+/**
+ * Created by chris on 2015-12-19.
+ */
+
+module.exports = {
+    SETTINGS_CHANGE: "SETTINGS_CHANGE",
+    CLEAR_SUCCESS_MESSAGES: "CLEAR_SUCCESS_MESSAGES",
+    MESSAGE_ADD: "MESSAGE_ADD"
+};

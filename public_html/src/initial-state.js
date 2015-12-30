@@ -3,14 +3,15 @@ module.exports = function(){
     return {
         messages: [{
 			text: "Hello",
-			time: "16:00 04/10-15",
+			time: "2015-10-04 16:00",
 			author: "Daniel"
 		},{
 			text: "World",
-			time: "16:59 04/11-15",
+			time: "2015-11-04 16:59",
 			author: "David"
 		}],
 		settings: {
+			successMessages: [],
 			author: "Anonymous"
 		}
     }
