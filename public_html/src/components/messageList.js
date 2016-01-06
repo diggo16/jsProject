@@ -33,7 +33,11 @@ var MessageList = React.createClass({
 			<div id = 'title'>
 			</div>
             <div id = 'messagelist'>
-
+			
+			<p id='authors'><b>Author</b></p>
+			<p id='messages'><b>Message</b></p>
+			<p id='times'><b>Time</b></p>
+			
 				<div id = 'authors'>
 					{this.props.messages.map(function (msg,n) {
 					  return (<p key={n} id='author'>{msg.author}</p>);
