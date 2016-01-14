@@ -49,23 +49,13 @@ p{
     background-color:#f6f6f6;
 }
 #messagelist {
-    width: 500px;
+    width: 600px;
     border: 1px solid black;
     overflow: hidden; /* add this to contain floated children */
-}
-#authors {
-    width: 100px;
-    float:left; /* add this */
+    margin: 10px;
 }
 #messages {
-    width: 300px;
-    float:left; /* add this */
-}
-#times{
-	width: 100px;
-    float: right; /* add this */
-}
-#message {
-}
-#time {
+    width: 500px;
+    float:left; 
+    margin: 10px;
 }
