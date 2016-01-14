@@ -26,27 +26,23 @@ var MessageList = React.createClass({
 		// Reset the input field
 		node.value = '';
 	},
+
 	// Render the message list, text input field and add button
     render: function(){
+
         return (
 			<div>
 			<div id = 'title'>
 			</div>
             <div id = 'messagelist'>
-
-				<div id = 'authors'>
-					{this.props.messages.map(function (msg,n) {
-					  return (<p key={n} id='author'>{msg.author}</p>);
-					})}
-				</div>
 				<div id = 'messages'>
-					{this.props.messages.map(function (msg,n) {
-					  return (<p key={n} id='message'>{msg.text}</p>);
-					})}
-				</div>
-				<div id = 'times'>
-					{this.props.messages.map(function (msg,n) {
-					  return (<p key={n} id ='time'>{msg.time}</p>);
+					{this.props.messages.map(function (msg,index) {
+					  return (
+					  	<p key={index}>
+					  		<b>{msg.author}</b> wrote at <i>{msg.time}</i>: <br /> 
+					  		{msg.text}
+					  	</p>
+					  	);
 					})}
 				</div>
             </div>
