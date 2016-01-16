@@ -51,7 +51,7 @@ p{
 #messagelist {
     width: 500px;
     border: 1px solid black;
-    overflow: hidden; /* add this to contain floated children */
+    overflow: hidden;
 }
 #authors {
     width: 100px;
@@ -66,6 +66,8 @@ p{
     float: right; /* add this */
 }
 #message {
+    text-overflow: ellipsis;
+    max-width: 300px;
 }
 #time {
 }
